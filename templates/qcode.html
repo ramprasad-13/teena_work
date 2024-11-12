@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Reader</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2em;
+            backdrop-filter: blur(5px);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #ffffff;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+        }
+
+        .container label {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+        }
+
+        .container input[type="file"] {
+            padding: 0.5em;
+            margin-top: 1em;
+        }
+
+        .submit-button {
+            background-color: #FF69B4;
+            color: white;
+            padding: 0.8em 2em;
+            border: none;
+            font-size: 1.1em;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            margin-top: 1em;
+        }
+
+        .submit-button:hover {
+            background-color: #C37299;
+            transform: translateY(-3px);
+        }
+
+        .output-text {
+            width: 80%;
+            padding: 1em;
+            font-size: 1em;
+            margin-top: 1.5em;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.2em;
+            margin-top: 2em;
+        }
+
+        .nav-button {
+            background-color: #007acc;
+            color: white;
+            padding: 0.8em 1.5em;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .nav-button:hover {
+            background-color: #005b99;
+            transform: translateY(-4px);
+        }
+
+        @media only screen and (max-width: 768px){  
+        .header h1 {
+            font-size: 2em;
+        }
+        
+        .submit-button {
+            padding: 0.6em 1.6em;
+            font-size: 1em;
+        }
+
+        .container label {
+            font-size: 1.5em;
+        }
+
+        .container input[type="file"] {
+            font-size: 1em;
+            margin-top: 1em;
+            width: 70%;
+        }
+        
+        .nav-button {
+            background-color: #007acc;
+            color: white;
+            padding: 0.8em 0.4em;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>QR Code Reader</h1>
+    </div>
+
+    <form id="qrForm" enctype="multipart/form-data">
+        <label for="img">Select QR Code Image:</label>
+        <input type="file" id="img" name="img" accept="image/*" required>
+        
+        <button type="button" class="submit-button" onclick="decodeQRCode()">Decode</button>
+        
+        <input type="text" id="decodedText" class="output-text" placeholder="Decoded text will appear here" readonly>
+    </form>
+
+    <div class="nav-buttons">
+        <form action="/home" method="POST">
+            <button class="nav-button">Home</button>
+        </form>
+        <form action="/imgfiles" method="POST">
+            <button class="nav-button">Image to Text</button>
+        </form>
+        <form action="/PDF" method="POST">
+            <button class="nav-button">PDF to Text</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function decodeQRCode() {
+        const mockDecodedText = "Sample decoded QR text";
+        document.getElementById("decodedText").value = mockDecodedText;
+    }
+</script>
+
+</body>
+</html>
